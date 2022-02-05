@@ -4,15 +4,20 @@ def read_ideas():
     ideas = []
     with open("ideas.txt") as file:
         for line in file:
-            print(line.strip())
+            ideas.append(line.strip())
     return ideas
+
+def show_ideas(ideas):
+    for count, idea in enumerate(ideas, 1):
+        print(f"{count}. {idea}") 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == '--list':
-        print(sys.argv[1])
+        show_ideas(read_ideas())
 
     if len(sys.argv) > 2 and sys.argv[1] == '--delete':
         print(sys.argv[2])
         
     print("Hello in Ideabank")
-    print(read_ideas())
+    ideas = read_ideas()
+    # show_ideas(ideas)
