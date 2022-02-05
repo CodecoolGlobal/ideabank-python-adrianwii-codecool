@@ -17,12 +17,22 @@ def save_ideas(ideas, file_name):
         for idea in ideas:
             file.write(f" {idea}\n")
 
+def delete_idea(index, ideas):
+    ideas.remove(ideas[index-1])
+    save_ideas(ideas, "ideas.txt")
+    show_ideas(ideas)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == '--list':
         show_ideas(read_ideas())
     elif len(sys.argv) > 2 and sys.argv[1] == '--delete':
-        print(sys.argv[2])
+        try:
+            index = int(sys.argv[2])
+        except ValueError:
+            print("Please provide a number value")
+        else:
+            ideas = read_ideas()
+            delete_idea(int(sys.argv[2]), ideas)
     else:
         while True:
             idea = input("Whats your new idea? ")
