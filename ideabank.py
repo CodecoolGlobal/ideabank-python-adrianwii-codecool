@@ -1,4 +1,8 @@
 # Put your code here
 
+def read_file():
+    #TODO implement reading from file
+    pass
 
-print("Hello in Ideabank")
+if __name__ == "__main__":
+    print("Hello in Ideabank")
